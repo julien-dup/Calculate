@@ -8,28 +8,28 @@
 <body>
    <div class="calculate">
       <div class="boxAffichageResult">
-        <div class="Affichageresult">123456789</div>
+        <input class="Affichageresult" type="text" id="result">
       </div>
       <div class="lineReset">
         <button data-button="=">=</button>
-        <button data-button="C">C</button>
+        <button data-button="resetAll">C</button>
       </div>
       <div class="lineNumberFunction">
           <div class="boxButtonNumber">
-        <button type="button" data-button="1">1</button>
-        <button  type="button" data-button="2">2</button>
-        <button  type="button" data-button="3">3</button>
-        <button  type="button" data-button="4">4</button>
-        <button  type="button"data-button="5">5</button>
-        <button  type="button"data-button="6">6</button>
-        <button  type="button"data-button="7">7</button>
-        <button  type="button"data-button="8">8</button>
-        <button  type="button"data-button="9">9</button>
-        <button  type="button"data-button="0">0</button>
-        <button  type="button"data-button=",">,</button>
+        <button type="button" data-button="number" data-self="1">1</button>
+        <button  type="button" data-button="number" data-self="2">2</button>
+        <button  type="button" data-button="number" data-self="3">3</button>
+        <button  type="button" data-button="number" data-self="4">4</button>
+        <button  type="button"data-button="number" data-self="5">5</button>
+        <button  type="button"data-button="number" data-self="6">6</button>
+        <button  type="button"data-button="number" data-self="7">7</button>
+        <button  type="button"data-button="number" data-self="8">8</button>
+        <button  type="button"data-button="number" data-self="9">9</button>
+        <button  type="button"data-button="number" data-self="0">0</button>
+        <button  type="button"data-button="number" data-self=",">,</button>
           </div>
           <div class="boxButtonFunction">
-            <button data-button2="m">m</button>
+            <button data-button="fonction" data-self="modulo">m</button>
             <button>/</button>
             <button>*</button>
             <button>+</button>
@@ -38,13 +38,23 @@
       </div>
   </div>
   <script>
-    let myButton =document.querySelectorAll("button")
-    myButton.document.addEventListener("click", function(){
-      myButton.className="buttonClick"
+    const resetAll =document.querySelector("button[data-button=resetAll]")
+    resetAll.addEventListener("click", function(){
+        // console.log("reset")
+        formElement.reset()  
     })
-    myButton.addEventListener("click", function (){
-      console.log(this.dataset.button)
-    } )
+    const myButton =document.querySelectorAll("button[data-button=number]")
+    // // myButton.addEventListener("click", function(){
+    // //   myButton.className="buttonClick"
+    // })
+    myButton.forEach(element =>{
+      element.addEventListener("click", function (){
+        result.value += this.dataset.self
+        element.className="buttonClick"
+      })
+    })
+   
+  
   </script> 
 </body>
 </html>
