@@ -1,0 +1,137 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    height :100vh;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    background: white;
+}
+.calculate {
+    width:650px;
+    height:900px;
+    background: black;
+    position:relative
+}
+.calculate::before,
+.calculate::after {
+    content:'';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width :100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff0000, #00f0f0, #00ff00, #0000ff, #ff0000, #00f0f0, #00ff00, #0000ff, #f00f0f);
+    background-size: 500%;
+    z-index: -1;
+    transform: scale(1.04);
+    animation: animate 40s infinite;
+}
+.box::after {
+    filter:blur(20px);
+}
+
+@keyframes animate {
+    0% { background-position: 0 0;}
+    50% {background-position: 300% 0 ;}
+    100% { background-position: 0 0;}
+
+}
+
+.boxAffichageResult {
+    width:100%;
+    height:25%;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Affichageresult {
+    width: 600px;
+    height: 200px;
+    background: #313131;
+    border: solid 3px #03e9fa;
+    font-size: 7em;
+    color: #03e9fa;
+    display :flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.lineReset {
+    width: 100%;
+    height: 18%;
+    justify-content: space-around;
+    display: flex;
+    
+    align-items: center;
+    
+    
+}
+
+.lineNumberFunction {
+    width :100%;
+    height: 57%;
+    display: flex;
+    
+}
+
+.boxButtonNumber {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;   
+}
+
+.boxButtonFunction {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    justify-content: space-around;
+    
+}
+
+
+button {
+    font-size: 4em;
+    color : ivory;
+    border-radius: 50%;
+    background: #313131;
+    width: 100px;
+    height: 100px;
+    margin-left: 5%;
+    margin-right: 5%;  
+}
+
+.buttonClick {
+    font-size: 4em;
+    color: black;
+    border-radius: 50%;
+    background: coral;
+    width: 100px;
+    height: 100px;
+    margin-left: 5%;
+    margin-right: 5%;
+    transition: 1s; 
+}
+
+@media screen and (min-width: 200px) and (max-width: 400px) {
+    .calculate {
+        width:100%;
+        height:100%;
+        background: black;
+        position:relative
+    }
+    body {
+        
+        display: none;
+      
+    }
+}
