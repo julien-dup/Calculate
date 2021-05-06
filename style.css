@@ -114,12 +114,18 @@ button {
     font-size: 4em;
     color: black;
     border-radius: 50%;
-    background: coral;
+    
     width: 100px;
     height: 100px;
     margin-left: 5%;
     margin-right: 5%;
     transition: 1s; 
+    animation: lightOn 1s;
+}
+
+@keyframes lightOn {
+    0% {background: #313131;}
+    100% {background: coral;}
 }
 
 @media screen and (min-width: 200px) and (max-width: 400px) {

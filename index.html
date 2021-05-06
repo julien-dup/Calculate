@@ -1,60 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr">
+
 <head>
   <meta charset="utf-8" />
   <title>Calculatrice</title>
-  <link rel="stylesheet" href="ressources/css/style.css"> 
+  <link rel="stylesheet" href="ressources/css/style.css">
 </head>
+
 <body>
-   <div class="calculate">
-      <div class="boxAffichageResult">
-        <input class="Affichageresult" type="text" id="result">
+  <div class="calculate">
+
+    <div class="boxAffichageResult">
+      <input class="Affichageresult" type="text" id="result">
+    </div>
+    <div class="lineReset">
+      <button type="button" data-button="=" id ="egal">=</button>
+      <button data-button="resetAll" type="button" id="reset">C</button>
+    </div>
+    <div class="lineNumberFunction">
+      <div class="boxButtonNumber">
+        <button type="button" data-button="number" data-self="1" id="number1">1</button>
+        <button type="button" data-button="number" data-self="2" id="number2">2</button>
+        <button type="button" data-button="number" data-self="3" id="number3">3</button>
+        <button type="button" data-button="number" data-self="4" id="number4">4</button>
+        <button type="button" data-button="number" data-self="5" id="number5">5</button>
+        <button type="button" data-button="number" data-self="6" id="number6">6</button>
+        <button type="button" data-button="number" data-self="7" id="number7">7</button>
+        <button type="button" data-button="number" data-self="8" id="number8">8</button>
+        <button type="button" data-button="number" data-self="9" id="number9">9</button>
+        <button type="button" data-button="number" data-self="0" id="number0">0</button>
+        <button type="button" data-button="number" data-self="," id="numberVirg">,</button>
       </div>
-      <div class="lineReset">
-        <button data-button="=">=</button>
-        <button data-button="resetAll">C</button>
+      <div class="boxButtonFunction">
+        <button type="button" data-button="fonction" data-self="%" >m</button>
+        <button type="button" data-button="fonction" data-self="/">/</button>
+        <button type="button" data-button="fonction" data-self="*">X</button>
+        <button type="button" data-button="fonction" data-self="+">+</button>
+        <button type="button" data-button="fonction" data-self="-">-</button>
       </div>
-      <div class="lineNumberFunction">
-          <div class="boxButtonNumber">
-        <button type="button" data-button="number" data-self="1">1</button>
-        <button  type="button" data-button="number" data-self="2">2</button>
-        <button  type="button" data-button="number" data-self="3">3</button>
-        <button  type="button" data-button="number" data-self="4">4</button>
-        <button  type="button"data-button="number" data-self="5">5</button>
-        <button  type="button"data-button="number" data-self="6">6</button>
-        <button  type="button"data-button="number" data-self="7">7</button>
-        <button  type="button"data-button="number" data-self="8">8</button>
-        <button  type="button"data-button="number" data-self="9">9</button>
-        <button  type="button"data-button="number" data-self="0">0</button>
-        <button  type="button"data-button="number" data-self=",">,</button>
-          </div>
-          <div class="boxButtonFunction">
-            <button data-button="fonction" data-self="modulo">m</button>
-            <button>/</button>
-            <button>*</button>
-            <button>+</button>
-            <button>-</button>
-          </div>
-      </div>
+    </div>
   </div>
   <script>
-    const resetAll =document.querySelector("button[data-button=resetAll]")
-    resetAll.addEventListener("click", function(){
-        // console.log("reset")
-        formElement.reset()  
-    })
-    const myButton =document.querySelectorAll("button[data-button=number]")
-    // // myButton.addEventListener("click", function(){
-    // //   myButton.className="buttonClick"
-    // })
-    myButton.forEach(element =>{
-      element.addEventListener("click", function (){
+    let myOperation = 0
+    const myButton = document.querySelectorAll("button[data-button=number]")
+    const buttonFunction = document.querySelectorAll("button[data-button=fonction]")
+    const buttonSelf = document.querySelectorAll("button[data-button=self]")
+    const additioner = document.querySelector("button[data-self=addition]")
+
+
+
+
+    myButton.forEach(element => {
+      element.addEventListener("click", function () {
         result.value += this.dataset.self
-        element.className="buttonClick"
+        element.className = "buttonClick"
       })
     })
-   
-  
-  </script> 
+
+    buttonFunction.forEach(element => {
+      element.addEventListener("click", function () {
+          myOperation = result.value + this.dataset.self
+          result.value = ''
+          element.className = "buttonClick"
+      }) 
+    })
+
+    egal.addEventListener("click", function () {
+      let myResult = eval(myOperation + result.value)
+      result.value =myResult
+      egal.className = "buttonClick"
+    })
+
+    reset.addEventListener("click", function() {
+        result.value =''
+        myOperation =''
+        reset.className = "buttonClick"
+    })
+    
+
+  </script>
 </body>
+
 </html>
